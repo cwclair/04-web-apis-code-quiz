@@ -1,0 +1,41 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+#intro {
+    font-size: 125%;
+    margin-bottom: 20px;
+}
+
+#questionHeader {
+    font-size: 150%;
+    width: 50vw;
+}
+
+#optionOne, #optionTwo, #optionThree, #optionFour {
+    background-color: beige;
+    font-size: 125%;
+    width: 50vw;
+    margin: 10px;
+    padding: 10px;
+}
+
+#optionOne:hover, #optionTwo:hover, #optionThree:hover, #optionFour:hover {
+    font-size: 130%;
+    cursor: pointer;
+}
+
+#praise {
+    font-size: 150%;
+    color: green;
+    margin: 10px;
+    padding: 10px;
+}
+
+#scorn {
+    font-size: 150%;
+    color: red;
+    margin: 10px;
+    padding: 10px;
+}
