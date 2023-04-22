@@ -14,11 +14,11 @@
 
 // DO I CREATE ARRAYS FOR THE QUESTIONS, AND ARRAYS FOR ANSWERS 1, 2, 3, AND 4? OR ARRAYS FOR THE OPTIONS FOR Q1, OPTIONS FOR Q2, AND SO ON?
 var startButton = document.querySelector("button");
-var optionOne = document.querySelector("#optionOne");
-var optionTwo = document.querySelector("#optionTwo");
-var optionThree = document.querySelector("#optionThree");
-var optionFour = document.querySelector("#optionFour");
-var canGuess = false;
+// var optionOne = document.querySelector("#optionOne");
+// var optionTwo = document.querySelector("#optionTwo");
+// var optionThree = document.querySelector("#optionThree");
+// var optionFour = document.querySelector("#optionFour");
+// var canGuess = false;
 
 var theQuestions = ["In an HTML document, where should you include reference to the JavaScript?", "Question 2", "Question 3", "Question 4", "Question 5"];
 console.log(theQuestions);
@@ -28,23 +28,15 @@ var answersThree = ["Both the head section and the body section", "Answer 3 dash
 var answersFour = ["Neither the head nor the body section", "Answer 4 dash 2", "Answer 4 dash 3", "Answer 4 dash 4", "Answer 4 dash 5"];
 var correctAnswers = ["The body section"];
 
-readyPlayerOne();
+document.querySelector("#intro").innerHTML = "We're going to ask you five questions about coding basics. A timer will count down while you do this. If you answer a question incorrectly, 10 seconds will be subtracted from the remaining time.";
+optionOne.style.display = "none";
+optionTwo.style.display = "none";
+optionThree.style.display = "none";
+optionFour.style.display = "none";
 
-function readyPlayerOne () {
-    document.querySelector("#intro").innerHTML = "We're going to ask you five questions about coding basics. A timer will count down while you do this. If you answer a question incorrectly, 10 seconds will be subtracted from the remaining time.";
-    optionOne.style.display = "none";
-    optionTwo.style.display = "none";
-    optionThree.style.display = "none";
-    optionFour.style.display = "none";
-}
-
-function displayQuestion () {
-
-}
 
 startButton.addEventListener("click", function(event) {
     event.preventDefault();
-    canGuess = true;
     optionOne.style.display = "block";
     optionTwo.style.display = "block";
     optionThree.style.display = "block";
@@ -58,45 +50,22 @@ startButton.addEventListener("click", function(event) {
     document.querySelector("#optionFour").innerHTML = answersFour[0];
 })
 
-optionOne.addEventListener("click", function(event) {
-    event.preventDefault();
-    if (!canGuess) {
-        return;
-    }
-    var optionGuessed = event.target.innerHTML;
-    console.log(optionGuessed);
-    for (var i = 0; i < correctAnswers.length; i++) {
-        if (optionGuessed == correctAnswers[i]) {
-            document.querySelector("#praise").textContent = "Last answer: Correctomundo!"
-            scorn.style.display = "none"
-        } else {
-            document.querySelector("#scorn").textContent = "Last answer: WRONG! 15 POINTS LOST."
-            praise.style.display = "none"
-        
-        }
-        canGuess = false;
-    }
-})
-
-optionTwo.addEventListener("click", function(event) {
-    event.preventDefault();
-    if (!canGuess) {
-        return;
-    }
-    var optionGuessed = event.target.innerHTML;
-    console.log(optionGuessed);
-    for (var i = 0; i < correctAnswers.length; i++) {
-        if (optionGuessed == correctAnswers[i]) {
-            document.querySelector("#praise").textContent = "Last answer: Correctomundo!"
-            scorn.style.display = "none"
-        } else {
-            document.querySelector("#scorn").textContent = "Last answer: WRONG! 15 POINTS LOST."
-            praise.style.display = "none"
-        }
-        canGuess = false;
-    }
-})
-
-// function checkAnswers() {
-
-// } 
+const answerOptions = document.querySelectorAll("li");
+answerOptions.forEach(li => {
+    li.addEventListener("click", function(event){
+        event.preventDefault();
+        console.log(event.target.innerHTML);
+        var optionGuessed = event.target.innerHTML;
+        console.log(optionGuessed);
+        for (var i = 0; i < correctAnswers.length; i++) {
+            if (optionGuessed == correctAnswers[i]) {
+                document.querySelector("#praise").textContent = "Last answer: Correctomundo!"
+                scorn.style.display = "none"
+            } else {
+                document.querySelector("#scorn").textContent = "Last answer: WRONG! 15 POINTS LOST."
+                praise.style.display = "none"
+            
+            }
+        };
+    });
+});        
