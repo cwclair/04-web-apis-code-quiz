@@ -16,7 +16,7 @@
 var startButton = document.querySelector("button");
 var timerEl = document.querySelector("#countdown");
 var questionsAnswered = 0;
-
+var grandTotal = 75;
 
 // var optionOne = document.querySelector("#optionOne");
 // var optionTwo = document.querySelector("#optionTwo");
@@ -24,13 +24,13 @@ var questionsAnswered = 0;
 // var optionFour = document.querySelector("#optionFour");
 // var canGuess = false;
 
-var theQuestions = ["In an HTML document, where should you include reference to the JavaScript?", "How do you create a function in JavaScript?", "Question 3", "Question 4", "Question 5"];
+const theQuestions = ["In an HTML document, where should you include reference to the JavaScript?", "How do you create a function in JavaScript?", "Question 3", "Question 4", "Question 5"];
 console.log(theQuestions);
-var answersOne = ["The body section", "function = myFunction()", "Answer 1 dash 3", "Answer 1 dash 4", "Answer 1 dash 5"];
-var answersTwo = ["The head section", "function:myFunction()", "Answer 2 dash 3", "Answer 2 dash 4", "Answer 2 dash 5"];
-var answersThree = ["Both the head section and the body section", "function myFunction()", "Answer 3 dash 3", "Answer 3 dash 4", "Answer 3 dash 5"];
-var answersFour = ["Neither the head nor the body section", "Any of these is fine", "Answer 4 dash 3", "Answer 4 dash 4", "Answer 4 dash 5"];
-var correctAnswers = ["The body section", "function myFunction()", "Answer 4 dash 3", "Answer 4 dash 4", "Answer 4 dash 5"];
+const answersOne = ["The body section", "function = myFunction()", "Answer 1 dash 3", "Answer 1 dash 4", "Answer 1 dash 5"];
+const answersTwo = ["The head section", "function:myFunction()", "Answer 2 dash 3", "Answer 2 dash 4", "Answer 2 dash 5"];
+const answersThree = ["Both the head section and the body section", "function myFunction()", "Answer 3 dash 3", "Answer 3 dash 4", "Answer 3 dash 5"];
+const answersFour = ["Neither the head nor the body section", "Any of these is fine", "Answer 4 dash 3", "Answer 4 dash 4", "Answer 4 dash 5"];
+const correctAnswers = ["The body section", "function myFunction()", "Answer 4 dash 3", "Answer 4 dash 4", "Answer 4 dash 5"];
 
 document.querySelector("#intro").innerHTML = "We're going to ask you five questions about coding basics. A timer will count down while you do this. If you answer a question incorrectly, 15 seconds will be subtracted from the remaining time.";
 optionOne.style.display = "none";
@@ -57,14 +57,17 @@ startButton.addEventListener("click", function(event) {
 
 function countdown() {
     var timeLeft = 75;
+    var grandTotal = timeLeft;
     var intervalId = setInterval(function() {
         timerEl.textContent = "Seconds remaining: " + timeLeft;
         console.log(timerEl.textContent);
         if (timeLeft <= 10) {
             timerEl.setAttribute("style", "color: red;")
         }
-        if (timeLeft === 0) {
+        if (timeLeft <= 0) {
+            grandTotal = 0;
             clearInterval(intervalId);
+            finalScore();
         }
         timeLeft--;
     }, 1000)
@@ -83,10 +86,13 @@ function countdown() {
                     timeLeft = timeLeft - 15;
                 }
         questionsAnswered++;
-        if (questionsAnswered === 5) {
-            console.log("The game should end now.")
+        if (questionsAnswered === 5) {  
+            grandTotal = timeLeft;
+            clearInterval(intervalId);
+            console.log("The game should end now.");
+            console.log(grandTotal);
+            finalScore();
         } else {
-            console.log("huh");
             nextQuestion()
     }
 })
@@ -106,6 +112,9 @@ function nextQuestion() {
     }
 
 
-function finalScore () {
-
+function finalScore() {
+    document.querySelector("#intro").innerHTML = "All done!<br><br>Your final score is " + grandTotal;
+    quizContainer.style.display = "none";
+    praise.style.display = "none";
+    timerEl.style.display = "none";
 }
