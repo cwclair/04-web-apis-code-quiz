@@ -24,13 +24,13 @@ var questionsAnswered = 0;
 // var optionFour = document.querySelector("#optionFour");
 // var canGuess = false;
 
-const theQuestions = ["In an HTML document, where should you include reference to the JavaScript?", "How do you create a function in JavaScript?", "Question 3", "Question 4", "Question 5"];
+const theQuestions = ["In an HTML document, where should you include reference to the JavaScript?", "How do you create a function in JavaScript?", "Which operator is used to assign a value to a variable?", "How would you call a function named myFunction?", "How would one write an if statement to execute code if the variable i is not equal to 5?"];
 console.log(theQuestions);
-const answersOne = ["The body section", "function = myFunction()", "Answer 1 dash 3", "Answer 1 dash 4", "Answer 1 dash 5"];
-const answersTwo = ["The head section", "function:myFunction()", "Answer 2 dash 3", "Answer 2 dash 4", "Answer 2 dash 5"];
-const answersThree = ["Both the head section and the body section", "function myFunction()", "Answer 3 dash 3", "Answer 3 dash 4", "Answer 3 dash 5"];
-const answersFour = ["Neither the head nor the body section", "Any of these is fine", "Answer 4 dash 3", "Answer 4 dash 4", "Answer 4 dash 5"];
-const correctAnswers = ["The body section", "function myFunction()", "Answer 4 dash 3", "Answer 4 dash 4", "Answer 4 dash 5"];
+const answersOne = ["The body section", "function = myFunction()", "Equal sign (=)", "call myFunction()", "if (i <> 5)"];
+const answersTwo = ["The head section", "function:myFunction()", "Asterisk (*)", "call function myFunction()", "if i <> 5"];
+const answersThree = ["Both the head section and the body section", "function myFunction()", "Hyphen (-)", "myFunction()", "if i =! 5 then"];
+const answersFour = ["Neither the head nor the body section", "Any of these is fine", "The letter x", "Any of these will call that function", "if (i != 5)"];
+const correctAnswers = ["The body section", "function myFunction()", "Equal sign (=)", "myFunction()", "if (i != 5)"];
 
 document.querySelector("#intro").innerHTML = "We're going to ask you five questions about coding basics. A timer will count down while you do this. If you answer a question incorrectly, 15 seconds will be subtracted from the remaining time.";
 optionOne.style.display = "none";
@@ -85,18 +85,18 @@ function countdown() {
                     document.querySelector("#praise").textContent = "Last answer: WRONG! 15 POINTS LOST.";
                     timeLeft = timeLeft - 15;
                 }
-        questionsAnswered++;
-        if (questionsAnswered === 5) {  
-            grandTotal = timeLeft;
-            finalScore();
-            clearInterval(intervalId);
-            console.log("The game should end now.");
-            console.log(grandTotal);
-        } else {
-            nextQuestion()
-    }
-})
-});        
+            questionsAnswered++;
+            if (questionsAnswered === 5) {  
+                grandTotal = timeLeft;
+                finalScore();
+                clearInterval(intervalId);
+                console.log("The game should end now.");
+                console.log(grandTotal);
+            } else {
+                nextQuestion()
+            }
+        })
+    });        
 }
 
 
