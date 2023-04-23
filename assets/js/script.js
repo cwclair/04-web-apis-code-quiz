@@ -69,21 +69,19 @@ function countdown() {
         timeLeft--;
     }, 1000)
 
-}
-
-const answerOptions = document.querySelectorAll("li");
-answerOptions.forEach(li => {
-    li.addEventListener("click", function(event){
-        event.preventDefault();
-        var optionGuessed = event.target.innerHTML;
-            if (correctAnswers.includes(optionGuessed)) {
-                praise.setAttribute("style", "color:green");
-                document.querySelector("#praise").textContent = "Last answer: Correctomundo!"
-            } else {
-                praise.setAttribute("style", "color: red")
-                document.querySelector("#praise").textContent = "Last answer: WRONG! 15 POINTS LOST."
-            
-            }
+    const answerOptions = document.querySelectorAll("li");
+        answerOptions.forEach(li => {
+            li.addEventListener("click", function(event){
+                event.preventDefault();
+                var optionGuessed = event.target.innerHTML;
+                if (correctAnswers.includes(optionGuessed)) {
+                    praise.setAttribute("style", "color:green");
+                    document.querySelector("#praise").textContent = "Last answer: Correctomundo!"
+                } else {
+                    praise.setAttribute("style", "color: red");
+                    document.querySelector("#praise").textContent = "Last answer: WRONG! 15 POINTS LOST.";
+                    timeLeft = timeLeft - 15;
+                }
         questionsAnswered++;
         if (questionsAnswered === 5) {
             console.log("The game should end now.")
@@ -93,6 +91,8 @@ answerOptions.forEach(li => {
     }
 })
 });        
+}
+
 
 
 
