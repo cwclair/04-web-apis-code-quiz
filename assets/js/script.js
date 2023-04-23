@@ -16,7 +16,7 @@
 var startButton = document.querySelector("button");
 var timerEl = document.querySelector("#countdown");
 var questionsAnswered = 0;
-var grandTotal = 75;
+// var grandTotal = 75;
 
 // var optionOne = document.querySelector("#optionOne");
 // var optionTwo = document.querySelector("#optionTwo");
@@ -57,7 +57,7 @@ startButton.addEventListener("click", function(event) {
 
 function countdown() {
     var timeLeft = 75;
-    var grandTotal = timeLeft;
+    grandTotal = timeLeft;
     var intervalId = setInterval(function() {
         timerEl.textContent = "Seconds remaining: " + timeLeft;
         console.log(timerEl.textContent);
@@ -88,10 +88,10 @@ function countdown() {
         questionsAnswered++;
         if (questionsAnswered === 5) {  
             grandTotal = timeLeft;
+            finalScore();
             clearInterval(intervalId);
             console.log("The game should end now.");
             console.log(grandTotal);
-            finalScore();
         } else {
             nextQuestion()
     }
