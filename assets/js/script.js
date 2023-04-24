@@ -13,17 +13,6 @@
 // I WILL NEED EVENT LISTENERS FOR CLICKS ON THE ANSWERS. 
 
 // DO I CREATE ARRAYS FOR THE QUESTIONS, AND ARRAYS FOR ANSWERS 1, 2, 3, AND 4? OR ARRAYS FOR THE OPTIONS FOR Q1, OPTIONS FOR Q2, AND SO ON?
-var startButton = document.querySelector("button");
-var timerEl = document.querySelector("#countdown");
-var questionsAnswered = 0;
-// var grandTotal = 75;
-
-// var optionOne = document.querySelector("#optionOne");
-// var optionTwo = document.querySelector("#optionTwo");
-// var optionThree = document.querySelector("#optionThree");
-// var optionFour = document.querySelector("#optionFour");
-// var canGuess = false;
-
 const theQuestions = ["In an HTML document, where should you include reference to the JavaScript?", "How do you create a function in JavaScript?", "Which operator is used to assign a value to a variable?", "How would you call a function named myFunction?", "How would one write an if statement to execute code if the variable i is not equal to 5?"];
 console.log(theQuestions);
 const answersOne = ["The body section", "function = myFunction()", "Equal sign (=)", "call myFunction()", "if (i <> 5)"];
@@ -32,19 +21,19 @@ const answersThree = ["Both the head section and the body section", "function my
 const answersFour = ["Neither the head nor the body section", "Any of these is fine", "The letter x", "Any of these will call that function", "if (i != 5)"];
 const correctAnswers = ["The body section", "function myFunction()", "Equal sign (=)", "myFunction()", "if (i != 5)"];
 
-document.querySelector("#intro").innerHTML = "We're going to ask you five questions about coding basics. A timer will count down while you do this. If you answer a question incorrectly, 15 seconds will be subtracted from the remaining time.";
-optionOne.style.display = "none";
-optionTwo.style.display = "none";
-optionThree.style.display = "none";
-optionFour.style.display = "none";
+var startButton = document.querySelector("#startButton");
+var timerEl = document.querySelector("#countdown");
+var questionsAnswered = 0;
+
+document.querySelector("#intro").innerHTML = "We're going to ask you five questions about coding basics. A timer will count down while you do this. If you answer a question incorrectly, 15 seconds will be subtracted from the remaining time. Your final score will equal the number of seconds remaining at the end of the quiz.";
+quizContainer.style.display = "none";
+enterInits.style.display = "none";
+savedScores.style.display = "none";
 
 
 startButton.addEventListener("click", function(event) {
     event.preventDefault();
-    optionOne.style.display = "block";
-    optionTwo.style.display = "block";
-    optionThree.style.display = "block";
-    optionFour.style.display = "block";
+    quizContainer.style.display = "block";
     document.querySelector("#intro").innerHTML = "";
     startButton.style.display = "none";
     document.querySelector("#questionHeader").innerHTML = theQuestions[0];
@@ -61,7 +50,7 @@ function countdown() {
     var intervalId = setInterval(function() {
         timerEl.textContent = "Seconds remaining: " + timeLeft;
         console.log(timerEl.textContent);
-        if (timeLeft <= 10) {
+        if (timeLeft <= 15) {
             timerEl.setAttribute("style", "color: red;")
         }
         if (timeLeft <= 0) {
@@ -79,11 +68,11 @@ function countdown() {
                 var optionGuessed = event.target.innerHTML;
                 if (correctAnswers.includes(optionGuessed)) {
                     praise.setAttribute("style", "color:green");
-                    document.querySelector("#praise").textContent = "Last answer: Correctomundo!"
+                    document.querySelector("#praise").textContent = "Last answer: Correct!"
                 } else {
                     praise.setAttribute("style", "color: red");
                     document.querySelector("#praise").textContent = "Last answer: WRONG! 15 POINTS LOST.";
-                    timeLeft = timeLeft - 15;
+                    timeLeft -= 15;
                 }
             questionsAnswered++;
             if (questionsAnswered === 5) {  
@@ -113,8 +102,38 @@ function nextQuestion() {
 
 
 function finalScore() {
-    document.querySelector("#intro").innerHTML = "All done!<br><br>Your final score is " + grandTotal;
     quizContainer.style.display = "none";
     praise.style.display = "none";
     timerEl.style.display = "none";
+
+    document.querySelector("#intro").innerHTML = "All done!<br><br>Your final score is " + grandTotal;
+    enterInits.style.display = "block";
+
+
 }
+
+function showRecordedScore () {
+    var initials = localStorage.getItem("initials");
+    var endScore = localStorage.getItem("endScore");
+    savedScores.style.display = "block";
+    document.querySelector("#intro").innerHTML = "";
+    enterInits.style.display = "none";
+    document.querySelector("#yourSavedScore").textContent = initials + ": " + endScore;
+
+
+}
+
+
+var initialsInput = document.querySelector("#initials");
+var initialsButton = document.querySelector("#submitInitials");
+
+initialsButton.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    var initials = initialsInput.value;
+    
+    localStorage.setItem("initials", initials);
+    localStorage.setItem("endScore", grandTotal);
+    showRecordedScore();
+})
+

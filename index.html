@@ -10,7 +10,6 @@
 <body>
     <h1>Coding Basics Quiz</h1>
     <div id="intro"></div>
-    <button id="startButton">Start the quiz!</button>
     <div id="quizContainer">
         <h2 id="questionHeader"></h2>
         <ol id="multipleChoiceList">
@@ -22,6 +21,20 @@
     </div>
     <div id="praise"></div>
     <div id="countdown"></div>
+    <div id="enterInits">
+        <form method="post">
+            <label for="initials">Want to save your score? Enter your initials:</label>
+            <input type="text" id="initials" name="initials">
+            <button id="submitInitials">Submit</button>
+        </form>
+    </div>
+    <div id="savedScores">
+        <h2>Your saved score:</h2>
+        <ul>
+           <li id="yourSavedScore"></li>
+        </ul>
+    </div>
+    <button id="startButton">Start the quiz!</button>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
