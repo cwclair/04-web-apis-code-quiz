@@ -36,12 +36,12 @@ startButton.addEventListener("click", function(event) {
     quizContainer.style.display = "block";
     document.querySelector("#intro").innerHTML = "";
     startButton.style.display = "none";
+    countdown();
     document.querySelector("#questionHeader").innerHTML = theQuestions[0];
     document.querySelector("#optionOne").innerHTML = answersOne[0];
     document.querySelector("#optionTwo").innerHTML = answersTwo[0];
     document.querySelector("#optionThree").innerHTML = answersThree[0];
     document.querySelector("#optionFour").innerHTML = answersFour[0];
-    countdown();
 })
 
 function countdown() {
@@ -119,8 +119,15 @@ function showRecordedScore () {
     document.querySelector("#intro").innerHTML = "";
     enterInits.style.display = "none";
     document.querySelector("#yourSavedScore").textContent = initials + ": " + endScore;
-
-
+    var playAgainButton = document.createElement("button");
+    var playAgainButtonText = document.createTextNode("Play again");
+    playAgainButton.appendChild(playAgainButtonText);
+    document.body.appendChild(playAgainButton);
+    playAgainButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        console.log("reload");
+        location.reload();
+    })
 }
 
 
