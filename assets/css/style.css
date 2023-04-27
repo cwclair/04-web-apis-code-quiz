@@ -1,8 +1,11 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
-
 }
 
+h1 {
+    background-color: gray;
+    color: whitesmoke;
+}
 #intro {
     font-size: 125%;
     margin-bottom: 20px;
@@ -14,7 +17,7 @@
 }
 
 #optionOne, #optionTwo, #optionThree, #optionFour {
-    background-color: beige;
+    background-color: bisque;
     font-size: 125%;
     width: 50vw;
     margin: 10px;
@@ -22,13 +25,12 @@
 }
 
 #optionOne:hover, #optionTwo:hover, #optionThree:hover, #optionFour:hover {
-    font-size: 130%;
+    font-size: 135%;
     cursor: pointer;
 }
 
 #praise {
     font-size: 150%;
-    color: green;
     margin: 10px;
     padding: 10px;
 }
@@ -36,4 +38,20 @@
 #countdown {
     font-size: 150%;
     font-weight: bold;
+}
+
+@media screen and (max-width: 576px) {
+    #questionHeader {
+        font-size: 150%;
+        width: 100vw;
+    }
+    
+    #optionOne, #optionTwo, #optionThree, #optionFour {
+        background-color: bisque;
+        font-size: 125%;
+        width: 80vw;
+        margin: 10px;
+        padding: 10px;
+    }
+    
 }
