@@ -1,4 +1,4 @@
-# 04-web-apis-code-quiz
+# Week 04: Web APIs: Code Quiz
 Build a timed coding quiz with multiple-choice questions.
 
 ## Your Task
@@ -46,3 +46,31 @@ Once either the timer hits zero or the fifth question is answered, the game proc
 
 ## Overview of Site
 
+Start screen, at larger width   
+![screenshot of start screen](assets/images/coding-quiz-01-start-screen.png)
+   
+Quiz has started, timer's running   
+![screenshot of first question](assets/images/coding-quiz-02-first-q.png)
+
+Got the first one right! (From here on out, the screenshots will show that I've resized the screen to a smaller width, to reflect the media screen changes.)   
+![screenshot of second question, with verdict on first question displayed below](assets/images/coding-quiz-03-correct.png)
+   
+Oops. Red message this time.   
+![screenshot of message when you get one wrong](assets/images/coding-quiz-04-incorrect.png)
+   
+The time is running low, so timer text turns red   
+![screenshot of low time](assets/images/coding-quiz-05-time-low.png)
+   
+Well, there's my score. I guess I'll enter my initials?   
+![screenshot of score and initials prompt](assets/images/coding-quiz-06-enter-initials.png)
+   
+The display of my score and my initials, with option to play again   
+![screenshot of score display and play again option](assets/images/coding-quiz-07-score-initials-display.png)
+   
+## Link to Deployed Site
+
+https://cwclair.github.io/04-web-apis-code-quiz/
+
+## Resources Used
+
+A combination of class lectures/activities and reference articles on W3Schools.
